@@ -17,3 +17,9 @@ data "archive_file" "lambda_zip_file" {
   excludes    = ["__init__.py", "*.pyc"]
   type        = "zip"
 }
+
+resource "aws_lambda_event_source_mapping" "example" {
+  event_source_arn  = aws_dynamodb_table.dynamodb_table.stream_arn
+  function_name     = aws_lambda_function.lambda_function.arn
+  starting_position = "LATEST"
+}

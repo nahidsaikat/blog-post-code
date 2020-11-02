@@ -34,7 +34,10 @@ resource "aws_iam_role_policy" "dynamodb_read_log_policy" {
                     "dynamodb:GetItem",
                     "dynamodb:GetRecords",
                     "dynamodb:Scan",
-                    "dynamodb:Query" ],
+                    "dynamodb:Query",
+                    "dynamodb:GetShardIterator",
+                    "dynamodb:DescribeStream",
+                    "dynamodb:ListStreams" ],
         "Effect": "Allow",
         "Resource": [
           "${aws_dynamodb_table.dynamodb_table.arn}",
