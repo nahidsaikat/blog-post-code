@@ -37,7 +37,7 @@ resource "aws_s3_bucket_policy" "allow_access_from_cloud_front" {
               "Resource": "arn:aws:s3:::${var.s3_bucket_name}/*",
               "Condition": {
                   "StringEquals": {
-                    "AWS:SourceArn": "arn:aws:cloudfront::666546513550:distribution/${aws_cloudfront_distribution.s3_distribution.id}"
+                    "AWS:SourceArn": "arn:aws:cloudfront::${var.account_number}:distribution/${aws_cloudfront_distribution.s3_distribution.id}"
                   }
               }
           }

@@ -1,5 +1,7 @@
+variable "account_number" {}
+
 variable "s3_bucket_name" {
-  default = "cloudfront-demo-bucket-nahid"
+  default = "cloudfront-demo-bucket"
 }
 
 locals {
