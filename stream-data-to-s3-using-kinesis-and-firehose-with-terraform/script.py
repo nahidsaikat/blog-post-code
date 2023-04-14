@@ -5,10 +5,10 @@ import random
 
 import boto3
 
-client = boto3.client("kinesis", region_name="eu-west-1")
+client = boto3.client("kinesis", region_name="eu-central-1")
 
 
-STREAM_NAME = "MyFirstStream"
+STREAM_NAME = "demo-event-log-stream"
 
 
 try:

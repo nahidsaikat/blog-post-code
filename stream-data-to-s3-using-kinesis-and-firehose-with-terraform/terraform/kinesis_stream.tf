@@ -1,18 +1,12 @@
 resource "aws_kinesis_stream" "demo_stream" {
-  name             = "terraform-kinesis-demo"
-  shard_count      = 1
-  retention_period = 48
-
-  shard_level_metrics = [
-    "IncomingBytes",
-    "OutgoingBytes",
-  ]
+  name             = "${var.kinesis_stream_name}"
+  retention_period = 24
 
   stream_mode_details {
-    stream_mode = "PROVISIONED"
+    stream_mode = "ON_DEMAND"
   }
 
   tags = {
-    Environment = "demo"
+    Product = "Demo"
   }
 }
