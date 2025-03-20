@@ -1,0 +1,34 @@
+---
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: key-auth
+  annotations:
+    kubernetes.io/ingress.class: kong
+plugin: key-auth
+config:
+  key_names:
+    - apikey
+  hide_credentials: true
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: api-key-secret
+  labels:
+    konghq.com/credential: key-auth
+type: Opaque
+stringData:
+  kongCredType: key-auth
+  key: secret
+---
+apiVersion: configuration.konghq.com/v1
+kind: KongConsumer
+metadata:
+  name: consumer
+  annotations:
+    kubernetes.io/ingress.class: kong
+username: username
+custom_id: "1234"
+credentials:
+  - api-key-secret

@@ -1,0 +1,20 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+   name: kong-routes
+   annotations:
+     konghq.com/strip-path: "true"
+     konghq.com/plugins: key-auth
+spec:
+   ingressClassName: kong
+   rules:
+   - http:
+      paths:
+      - path: /httpbin
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: httpbin-app
+            port:
+              number: 80
