@@ -1,7 +1,6 @@
 ### This repository contains code for the following blog post.
 ## www.nahidsaikat.com/blog/setup-key-auth-plugin-in-kong-api-gateway-on-kubernetes-minikube/
 
-
 #### Run the following commands
 ```bash
 minikube start
